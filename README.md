@@ -121,17 +121,17 @@ The `itdr()` function also can be used to estimate the central mean subspace in 
 
 ```{r eval=FALSE, include=TRUE}
 library(itdr)
-	data("Recumbent")
-	Recumbent.df=na.omit(Recumbent)
-	y=Recumbent.df$outcome
-	X1=log(Recumbent.df$ast)
-	X2=log(Recumbent.df$ck)
-	X3=log(Recumbent.df$urea)
-	p=3
-	x=matrix(c(X1,X2,X3),ncol=p)
-	d=2
-	fit.iht_CMS=itdr(y,x,2,method="iht")
-	fit.iht_CMS$eta_hat
+data("Recumbent")
+Recumbent.df=na.omit(Recumbent)
+y=Recumbent.df$outcome
+X1=log(Recumbent.df$ast)
+X2=log(Recumbent.df$ck)
+X3=log(Recumbent.df$urea)
+p=3
+x=matrix(c(X1,X2,X3),ncol=p)
+d=2
+fit.iht_CMS=itdr(y,x,2,method="iht")
+fit.iht_CMS$eta_hat
 ```
 
 ## Chapter 4: Functions related with estimating the central subspace in regression using Fourier transformation approach on inverse dimension reduction
