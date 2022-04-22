@@ -2,12 +2,12 @@
 
 ## Overview
 
-"itdr" is a system for estimating a basis of the central and central mean subspaces in regression by using integral transformation methods. This "vignette" demonstrate the usage of functions in `itdr` package over "automobile" and "PDB" datasets.
+**itdr** is a system for estimating a basis of the central and central mean subspaces in regression by using integral transformation methods. This  `vignette` demonstrate the usage of functions in **itdr** package over `automobile`, `Recumbent` and `PDB` datasets.
 
 ## Chapter 1: Installation 
-### 1.1: Install `itdr` package
+### 1.1: Install **itdr** package
 
-Installation can be done for `itdr` R package in three ways.
+Installation can be done for **itdr** R package in three ways.
 
 * From the Comprehensive R Archive Network (CRAN): Use `install.packages()` function in R. Then, import `itdr` package into working session using `library()` function. That is,
 ```{r eval=FALSE, include=TRUE}
@@ -15,7 +15,7 @@ install.packages("itdr")
 library(itdr)
 ```
 
-* From binary source package: Use `intall.package()` function in R. Then, import `itdr` package into working session using `library()` function. That is,
+* From binary source package: Use `intall.package()` function in R. Then, import **itdr** package into working session using `library()` function. That is,
 ```{r eval=FALSE, include=TRUE}
 install.packages("~/itdr.zip")
 library(itdr)
@@ -31,9 +31,9 @@ library(itdr)
 
 ## Chpater 2: Functions related to the Fourier and Convolution transformation methods to estimate Sufficient Dimension Reduction (SDR) subspaces
 
-In this section, we describe the functions in `itdr` package which use Fourier transformation method to estimate sufficient dimension reduction (SDR) subspaces in regression. We only demonstrate the Fourier transformation method. However, by passing the argument `method="CM"` to the `itdr()` function, convolution transformation method can be obtained. 
+In this section, we describe the functions in **itdr** package which use Fourier transformation method to estimate sufficient dimension reduction (SDR) subspaces in regression. We only demonstrate the Fourier transformation method. However, by passing the argument `method="CM"` to the `itdr()` function, convolution transformation method can be obtained. 
 
-Before estimating the SDR subspaces, it is required to estimate the dimension (d) of the SDR subspace and tunning parameters `sw2`, and `st2`.  In Section 2.1, the estimation of dimension (d) is demonstrated.  The estimation of the tuning parameter `sw2` for both subspaces, i.e., for the central subspace (CS) and the central mean subspace (CMS), is explained in Section 2.2.1. Moreover, the estimation of `st2` for the central subspace (CS) is explained in Section 2.2.2. Finally, the use of `itdr()` function to estimate the central subspace is demonstrated in Section 2.3.
+Before estimating the SDR subspaces, it is required to estimate the dimension (d) of the SDR subspace and tuning parameters `sw2`, and `st2`.  In Section 2.1, the estimation of dimension (d) is demonstrated.  The estimation of the tuning parameter `sw2` for both subspaces, i.e., for the central subspace (CS) and the central mean subspace (CMS), is explained in Section 2.2.1. Moreover, the estimation of `st2` for the central subspace (CS) is explained in Section 2.2.2. Finally, the use of `itdr()` function to estimate the central subspace is demonstrated in Section 2.3.
 
 ### 2.1: Estimating the dimension (d) of sufficient dimension reduction (SDR) subspaces
 
@@ -55,11 +55,11 @@ auto_d=d_est$d.hat
 # Estimated d_hat=2
 ```
 
-Here, the estimate of the dimension of the central subspace for `automobile` data is 2, i.e., d_hat=2.
+Here, the estimate of the dimension of the central subspace for 'automobile' data is 2, i.e., d_hat=2.
 
 ### 2.2: Estimating tuning parameters and bandwidth parameters for Gaussian kernel density estimation
 
-There are two tuning parameters that need to be estimated in the process of estimating SDR subspaces using the Fourier method: namely `sw2` and `st2`. The `sw2` required in both the central mean (CMS) and the central subspace (CS). However, the `st2` required only in the central subspace. The code in Section 2.2.1 demonstrates the use of function `wx()` to estimate the tunning parameter `sw2`, and the use of the function `wy()` to estimate the tunning parameter `st2` is described in Section 2.2.2.
+There are two tuning parameters that need to be estimated in the process of estimating SDR subspaces using the Fourier method: namely `sw2` and `st2`. The `sw2` required in both the central mean (CMS) and the central subspace (CS). However, the `st2` required only in the central subspace. The code in Section 2.2.1 demonstrates the use of function `wx()` to estimate the tuning parameter `sw2`, and the use of the function `wy()` to estimate the tuning parameter `st2` is described in Section 2.2.2.
 
 ### 2.2.1: Estimate `sw2`
 
@@ -90,7 +90,7 @@ h_hat$h.hat #we have the estimator as h_hat=1
 
 ### 2.3: Estimate SDR subspaces
 
-We have described the estimation procedure of the tunning parameters in the Fourier method in Sections 2.1-2.2. Now, we are ready to estimate the SDR subspaces. Zhu and Zeng (2006) used the Fourier method to facilitate the estimation of the SDR subspaces when the predictors are following a multivariate normal distribution. However, when the predictor variables is following an elliptical distribution  or more generally when the distribution of the predictors is unknow, the predictors' distribution function is approximated by using the Gaussian kernel density estimation (Zeng and Zhu, 2010). The `itdr()` function can be used to estimate the SDR subspaces under `FM` method as follows.  Since the default setting of the `itdr()` function has `method="FM"`, It is optional to specify the method as "FM". 
+We have described the estimation procedure of the tunning parameters in the Fourier method in Sections 2.1-2.2. Now, we are ready to estimate the SDR subspaces. Zhu and Zeng (2006) used the Fourier method to facilitate the estimation of the SDR subspaces when the predictors are following a multivariate normal distribution. However, when the predictor variables is following an elliptical distribution  or more generally when the distribution of the predictors is unknown, the predictors' distribution function is approximated by using the Gaussian kernel density estimation (Zeng and Zhu, 2010). The `itdr()` function can be used to estimate the SDR subspaces under `FM` method as follows.  Since the default setting of the `itdr()` function has `method="FM"`, It is optional to specify the method as "FM". 
 
 ```{r eval=FALSE, include=TRUE}
 library(itdr)
@@ -117,21 +117,30 @@ round(fit.F_CMS$eta_hat,2)
 
 ## Chapter 3: Functions related with estimating the central mean subspace using Iterative Hessian Transformation (IHT)
 
-The `itdr()` function also can be used to estimate the central mean subspace in regression by using iterative Hessian transformation (IHT) method as described in the following R chunk. Notice that the inputs are the method of estimation (`method=iht`), the response vector (y), design matrix of the predictors (x), and the dimension (d) of the CMS. 
+The `itdr()` function also can be used to estimate the central mean subspace in regression by using iterative Hessian transformation (IHT) method as described in the following R chunk on `Recumbent` dataset available in **itdr** package. Notice that the inputs are the method of estimation (`method=iht`), the response vector (y), design matrix of the predictors (x), and the dimension (d) of the CMS. The response and predictors are chosen as same as Cook and Li (2002).  
 
 ```{r eval=FALSE, include=TRUE}
-d=2
-fit.iht_CMS=itdr(y,xt,d,method="iht")
-fit.iht_CMS$eta_hat
+library(itdr)
+	data("Recumbent")
+	Recumbent.df=na.omit(Recumbent)
+	y=Recumbent.df$outcome
+	X1=log(Recumbent.df$ast)
+	X2=log(Recumbent.df$ck)
+	X3=log(Recumbent.df$urea)
+	p=3
+	x=matrix(c(X1,X2,X3),ncol=p)
+	d=2
+	fit.iht_CMS=itdr(y,x,2,method="iht")
+	fit.iht_CMS$eta_hat
 ```
 
 ## Chapter 4: Functions related with estimating the central subspace in regression using Fourier transformation approach on inverse dimension reduction
 
-In this section, we demonstrate the functions in `itdr` package, which related to the Fourier transformation approach on inverse dimension reduction. In Section 4.1, we demonstrate the use of function to estimate the dimension of the central subspace using the Fourier transformation approach on inverse dimension reduction. The estimation of the CS is described in Section 4.2.
+In this section, we demonstrate the functions in **itdr** package, which related to the Fourier transformation approach on inverse dimension reduction. In Section 4.1, we demonstrate the use of function to estimate the dimension of the central subspace using the Fourier transformation approach on inverse dimension reduction. The estimation of the CS is described in Section 4.2.
 
 ### 4.1: Estimating d
 
-The estimation of the dimension of the CS can be achieved using  `d.test()` function which gives outputs of three different p-values for three different test statistics; Cook test statistic (Cook, 1998 and Weng and Yin, 2018), Scaled test statistic (Bentler and Xie, 2000), and Adjusted test statistic (Bentler and Xie, 2000). Suppose `m` is the candidate dimension of the CS to be tested `(H_0: d=m)`, then, the following R code shows the testing a candidate value `m` (<p) for dimension of the CS of the planning database (PDB).
+The estimation of the dimension of the CS can be achieved using  `d.test()` function which gives outputs of three different p-values for three different test statistics; Weighted Chi-square test statistic (Weng and Yin, 2018), Scaled test statistic (Bentler and Xie, 2000), and Adjusted test statistic (Bentler and Xie, 2000). Suppose `m` is the candidate dimension of the CS to be tested `(H_0: d=m)`, then, the following R code shows the testing a candidate value `m` (<p) for dimension of the CS of the planning database (PDB).
 
 ```{r eval=FALSE, include=TRUE}
 library(itdr)
@@ -191,8 +200,6 @@ The codes for the Fourier transformation and the convolution transformation meth
 
 * Bentler, P.M., and Xie, J. (2000). Corrections to Test Statistics in Principal Hessian Directions.
 _Statistics and Probability Letters_. 47, 381-389.
-
-* Cook, R. D. (1998). _Regression Graphics: Ideas for Studying Regressions Through Graphics_.Wiley.
 
 * Cook R. D., and Li, B., (2002).
 Dimension Reduction for Conditional Mean in Regression. 
